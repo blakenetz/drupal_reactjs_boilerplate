@@ -56,6 +56,7 @@ class Application extends App {
           <SiteLayout>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             // @ts-expect-error TS(2559): Type '{ pageProps: any; router: Router; __N_SSG?: ... Remove this comment to see the full error message
+            // @ts-expect-error TS(2559): Type '{ pageProps: any; router: Router; __N_SSG?: ... Remove this comment to see the full error message
             {statusCode === 200 && <Component {...pageProps} />}
             {statusCode !== 200 && <ErrorMessage statusCode={statusCode} />}
           </SiteLayout>

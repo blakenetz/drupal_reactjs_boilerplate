@@ -31,6 +31,7 @@
     "superagent-prefix": "^0.0.2"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.5",
     "@types/next-redux-saga": "^3.0.5",
     "@types/nprogress": "^0.2.3",
     "@types/react": "^18.3.11",
