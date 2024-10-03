@@ -1,18 +1,15 @@
-import './_style.scss';
-import NProgress from 'nprogress';
-import Router from 'next/router';
+import "./_style.scss";
+import NProgress from "nprogress";
+import Router from "next/router";
 
-// @ts-expect-error TS(2339): Property 'onRouteChangeStart' does not exist on ty... Remove this comment to see the full error message
-Router.onRouteChangeStart = () => {
+Router.events.on("onRouteChangeStart", () => {
   NProgress.start();
-};
+});
 
-// @ts-expect-error TS(2339): Property 'onRouteChangeComplete' does not exist on... Remove this comment to see the full error message
-Router.onRouteChangeComplete = () => {
+Router.events.on("onRouteChangeComplete", () => {
   NProgress.done();
-};
+});
 
-// @ts-expect-error TS(2339): Property 'onRouteChangeError' does not exist on ty... Remove this comment to see the full error message
-Router.onRouteChangeError = () => {
+Router.events.on("onRouteChangeError", () => {
   NProgress.done();
-};
+});

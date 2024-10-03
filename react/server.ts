@@ -3,7 +3,6 @@ import express from "express";
 import basicAuth from "express-basic-auth";
 import nextjs from "next";
 import dotenv from "dotenv";
-// @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'routes'.
 import routes from "./routes";
 
 // Import variables from local .env file if exists.

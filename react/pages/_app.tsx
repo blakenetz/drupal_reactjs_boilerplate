@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import App from "next/app";
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
@@ -49,7 +49,6 @@ class Application extends App<Props, ComponentProps> {
 
     const statusCode = pageProps.statusCode || 200;
     return (
-      // @ts-expect-error TS(2769): No overload matches this call.
       <Provider store={store}>
         <>
           <HtmlHead />
