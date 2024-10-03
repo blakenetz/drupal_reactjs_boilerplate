@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/next-redux-saga": "^3.0.5",
+    "@types/nprogress": "^0.2.3",
     "@types/superagent": "^8.1.9",
     "@types/superagent-prefix": "^0.0.6",
     "babel-eslint": "^10.1.0",
