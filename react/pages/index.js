@@ -25,8 +25,8 @@ class HomePage extends React.Component {
     const { articles } = this.props;
     return (
       <div>
-            Home page is working!<br /><br />
-            List of articles from Drupal:<br />
+        Home page is working!<br /><br />
+        List of articles from Drupal:<br />
         <ul>
           {articles.map((article) => <li key={article.id}>{article.title} (id: {article.id})</li>)}
         </ul>
