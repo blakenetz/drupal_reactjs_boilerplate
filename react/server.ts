@@ -3,6 +3,7 @@ const express = require('express');
 const basicAuth = require('express-basic-auth');
 const nextjs = require('next');
 const dotenv = require('dotenv');
+// @ts-expect-error TS(2451): Cannot redeclare block-scoped variable 'routes'.
 const routes = require('./routes');
 
 // Import variables from local .env file if exists.
@@ -41,7 +42,7 @@ app.prepare()
         'Content-Type': 'text/plain;charset=UTF-8',
       },
     };
-    expressServer.get('/robots.txt', (req, res) => (
+    expressServer.get('/robots.txt', (req: any, res: any) => (
       res.status(200).sendFile('robots.txt', options)
     ));
 
@@ -50,9 +51,9 @@ app.prepare()
       maxAge: '7d',
     }));
 
-    expressServer.get('*', (req, res) => handler(req, res));
+    expressServer.get('*', (req: any, res: any) => handler(req, res));
 
-    expressServer.listen(port, (err) => {
+    expressServer.listen(port, (err: any) => {
       if (err) throw err;
       // eslint-disable-next-line no-console
       console.log('> Application is ready to serve!');
