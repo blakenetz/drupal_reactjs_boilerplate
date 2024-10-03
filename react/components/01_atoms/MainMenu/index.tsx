@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from '../../../routes';
+import React from "react";
+import { Link } from "../../../routes";
 
 const MainMenu = () => (
   <Link to="/">
