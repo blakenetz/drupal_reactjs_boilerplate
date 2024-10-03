@@ -1,7 +1,7 @@
-import './_style.scss';
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from '../../../routes';
+import "./_style.scss";
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "../../../routes";
 
 const ErrorMessage = ({ statusCode }) => (
   <div className="error-message">
