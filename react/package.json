@@ -31,6 +31,9 @@
     "superagent-prefix": "^0.0.2"
   },
   "devDependencies": {
+    "@types/next-redux-saga": "^3.0.5",
+    "@types/superagent": "^8.1.9",
+    "@types/superagent-prefix": "^0.0.6",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",

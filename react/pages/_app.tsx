@@ -1,13 +1,13 @@
-import React from 'react';
-import App from 'next/app';
-import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
-import withReduxSaga from 'next-redux-saga';
-import HtmlHead from '../components/01_atoms/HtmlHead';
-import configureStore from '../store/store';
-import ErrorMessage from '../components/01_atoms/ErrorMessage';
-import SiteLayout from '../components/04_templates/GlobalLayout';
-import '../components/01_atoms/PageProgressBar'; // Beautiful page transition indicator.
+import React from "react";
+import App from "next/app";
+import { Provider } from "react-redux";
+import withRedux from "next-redux-wrapper";
+import withReduxSaga from "next-redux-saga";
+import HtmlHead from "../components/01_atoms/HtmlHead";
+import configureStore from "../store/store";
+import ErrorMessage from "../components/01_atoms/ErrorMessage";
+import SiteLayout from "../components/04_templates/GlobalLayout";
+import "../components/01_atoms/PageProgressBar"; // Beautiful page transition indicator.
 
 class Application extends App {
   static async getInitialProps({ Component, res, ctx }) {
@@ -45,7 +45,7 @@ class Application extends App {
         <>
           <HtmlHead />
           <SiteLayout>
-            { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             {statusCode === 200 && <Component {...pageProps} />}
             {statusCode !== 200 && <ErrorMessage statusCode={statusCode} />}
           </SiteLayout>
