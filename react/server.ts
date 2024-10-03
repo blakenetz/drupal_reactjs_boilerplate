@@ -57,9 +57,11 @@ app.prepare().then(() => {
 
   expressServer.get("*", (req: any, res: any) => handler(req, res));
 
-  expressServer.listen(port, (err: any) => {
-    if (err) throw err;
+  expressServer.listen(port, () => {
     // eslint-disable-next-line no-console
     console.log("> Application is ready to serve!");
+  });
+  expressServer.listen(port).on("error", (err) => {
+    if (err) throw err;
   });
 });
