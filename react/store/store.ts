@@ -1,17 +1,17 @@
 // Default redux createStore function.
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from "redux";
 
 // Debug.
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from "redux-devtools-extension";
 
 // Sagas!
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from "redux-saga";
 
 // Import all our custom sagas.
-import sagas from './sagas';
+import sagas from "./sagas";
 
 // Import all our custom reducers.
-import reducers from './reducers';
+import reducers from "./reducers";
 
 // Create a saga middleware.
 const sagaMiddleware = createSagaMiddleware();
@@ -22,7 +22,7 @@ function configureStore(initialState: any) {
   const store = createStore(
     reducers,
     initialState,
-    composeWithDevTools(applyMiddleware(sagaMiddleware)),
+    composeWithDevTools(applyMiddleware(sagaMiddleware))
   );
 
   // @ts-expect-error TS(2339): Property 'runSagaTask' does not exist on type 'Sto... Remove this comment to see the full error message

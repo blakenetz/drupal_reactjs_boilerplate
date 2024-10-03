@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import * as articleApi from '../api/article';
+import React from "react";
+import PropTypes from "prop-types";
+import * as articleApi from "../api/article";
 
 class HomePage extends React.Component {
   static async getInitialProps() {
@@ -50,7 +50,7 @@ HomePage.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
       id: PropTypes.string,
-    }),
+    })
   ),
 };
 

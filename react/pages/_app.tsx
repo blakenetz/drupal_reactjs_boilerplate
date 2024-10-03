@@ -1,22 +1,25 @@
-import React from 'react';
-import App from 'next/app';
-import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
-import withReduxSaga from 'next-redux-saga';
-import HtmlHead from '../components/01_atoms/HtmlHead';
-import configureStore from '../store/store';
-import ErrorMessage from '../components/01_atoms/ErrorMessage';
-import SiteLayout from '../components/04_templates/GlobalLayout';
-import '../components/01_atoms/PageProgressBar'; // Beautiful page transition indicator.
+import React from "react";
+import App from "next/app";
+import { Provider } from "react-redux";
+import withRedux from "next-redux-wrapper";
+import withReduxSaga from "next-redux-saga";
+import HtmlHead from "../components/01_atoms/HtmlHead";
+import configureStore from "../store/store";
+import ErrorMessage from "../components/01_atoms/ErrorMessage";
+import SiteLayout from "../components/04_templates/GlobalLayout";
+import "../components/01_atoms/PageProgressBar"; // Beautiful page transition indicator.
+import { Router } from "next/router";
+import { Store } from "redux";
 
-class Application extends App {
-  static async getInitialProps({
-    Component,
-    res,
-    ctx,
-  }: any) {
+/** @todo update props */
+type ComponentProps = { statusCode?: number; router: Router };
+type Props = { store: Store };
+
+class Application extends App<Props, ComponentProps> {
+  static async getInitialProps({ Component, res, ctx }: any) {
     const initialProps = {
       isServer: !!ctx.req,
+      statusCode: undefined,
     };
 
     // Call to getInitialProps() from the Page component.
@@ -28,9 +31,7 @@ class Application extends App {
 
       // In case of Server Side rendering we want the server to throw the
       // correct error code.
-      // @ts-expect-error TS(2339): Property 'statusCode' does not exist on type '{ is... Remove this comment to see the full error message
       if (res && initialProps.statusCode) {
-        // @ts-expect-error TS(2339): Property 'statusCode' does not exist on type '{ is... Remove this comment to see the full error message
         res.statusCode = initialProps.statusCode;
       }
 
@@ -44,9 +45,8 @@ class Application extends App {
   }
 
   render() {
-    // @ts-expect-error TS(2339): Property 'store' does not exist on type 'Readonly<... Remove this comment to see the full error message
-    const { Component, store, ...pageProps } = this.props;
-    // @ts-expect-error TS(2339): Property 'statusCode' does not exist on type '{ pa... Remove this comment to see the full error message
+    const { Component, store, pageProps, ...rest } = this.props;
+
     const statusCode = pageProps.statusCode || 200;
     return (
       // @ts-expect-error TS(2769): No overload matches this call.
@@ -55,9 +55,7 @@ class Application extends App {
           <HtmlHead />
           <SiteLayout>
             {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-            // @ts-expect-error TS(2559): Type '{ pageProps: any; router: Router; __N_SSG?: ... Remove this comment to see the full error message
-            // @ts-expect-error TS(2559): Type '{ pageProps: any; router: Router; __N_SSG?: ... Remove this comment to see the full error message
-            {statusCode === 200 && <Component {...pageProps} />}
+            {statusCode === 200 && <Component {...pageProps} {...rest} />}
             {statusCode !== 200 && <ErrorMessage statusCode={statusCode} />}
           </SiteLayout>
         </>
